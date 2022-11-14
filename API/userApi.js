@@ -1,0 +1,10 @@
+const { auth } = require('../middleware/auth.midleWare')
+const { validUser, validParams } = require('../middleware/valid')
+const { signup, signin, conFirmEmail, changePassword, changeName } = require('../services/userService')
+const router = require('express').Router()
+router.post('/signup' , signup)
+router.post('/signin' ,signin)
+router.get('/verify/:token',conFirmEmail)
+router.patch('/updatePassWord' ,auth,changePassword)
+router.patch('/changeNameUser' ,auth, changeName)
+module.exports = router
